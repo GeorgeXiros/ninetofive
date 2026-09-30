@@ -765,25 +765,7 @@
         margin: 0;
         color: var(--muted);
         font-size: 15px;
-      }
-
-      .playstore-btn {
-        display: inline-flex;
-        align-items: center;
-        text-decoration: none;
-        transition:
-          opacity 0.15s ease,
-          transform 0.15s ease;
-        flex-shrink: 0;
-      }
-      .playstore-btn:hover {
-        opacity: 0.85;
-        transform: translateY(-1px);
-      }
-      .playstore-btn img {
-        height: 58px;
-        width: auto;
-        display: block;
+        max-width: 640px;
       }
 
       footer {
@@ -793,11 +775,20 @@
         font-size: 14px;
         color: var(--muted);
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
+        gap: 12px 24px;
+      }
+      footer nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 20px;
       }
       footer a {
         color: var(--muted);
         text-decoration: none;
+        white-space: nowrap;
         transition: color 0.15s ease;
       }
       footer a:hover {
@@ -818,8 +809,8 @@
           gap: 24px;
           align-items: stretch;
         }
-        .playstore-btn {
-          justify-content: center;
+        .cta-info p {
+          max-width: none;
         }
       }
 
@@ -833,6 +824,13 @@
         }
         h1 {
           font-size: 32px;
+        }
+        .cta-block {
+          padding: 32px 24px;
+        }
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     </style>
@@ -1538,10 +1536,11 @@
               <p>Όχι. Η εφαρμογή είναι δωρεάν για όλους τους εργαζόμενους.</p>
             </div>
             <div class="faq-item">
-              <h3>Πού είναι διαθέσιμη;</h3>
+              <h3>Πού θα είναι διαθέσιμη;</h3>
               <p>
-                Η εφαρμογή είναι διαθέσιμη για λήψη σε συσκευές Android μέσω του
-                Google Play Store.
+                Η εφαρμογή θα είναι σύντομα διαθέσιμη για συσκευές Android μέσω
+                του Google Play Store. Αυτή τη στιγμή βρίσκεται σε δοκιμαστικό
+                στάδιο.
               </p>
             </div>
           </div>
@@ -1549,28 +1548,21 @@
 
         <section class="cta-block">
           <div class="cta-info">
-            <h2>Κατεβάστε την εφαρμογή</h2>
+            <h2>Σύντομα στο Google Play</h2>
             <p>
-              Αποκτήστε το ninetofive App δωρεάν στο κινητό σας από το Google
-              Play Store.
+              Το ninetofive App βρίσκεται ακόμα σε δοκιμαστικό στάδιο και
+              αναζητούμε testers. Θα είναι διαθέσιμο σύντομα στο Google Play
+              Store.
             </p>
           </div>
-          <a href="#" class="playstore-btn" target="_blank" rel="noopener">
-            <img
-              src="playstore.png"
-              alt="Get it on Google Play"
-              width="180"
-              height="58"
-            />
-          </a>
         </section>
       </main>
 
       <footer>
         <span>© ninetofive App</span>
         <nav>
-          <a href="privacy.html">Πολιτική Απορρήτου</a> ·
-          <a href="terms.html">Όροι Χρήσης</a>
+          <a href="https://ninetofive.gr/privacy.html">Πολιτική Απορρήτου</a>
+          <a href="https://ninetofive.gr/terms.html">Όροι Χρήσης</a>
         </nav>
       </footer>
     </div>
