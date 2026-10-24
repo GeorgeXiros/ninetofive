@@ -8,6 +8,7 @@
       name="description"
       content="Το ninetofive App είναι η εφαρμογή για εργαζόμενους στην Ελλάδα: ανώνυμες αναρτήσεις, υπολογισμός ωραρίου & υπερωριών, αξιολογήσεις εταιρειών."
     />
+    <meta name="theme-color" content="#501529" />
     <link rel="canonical" href="https://ninetofive.gr/" />
 
     <!-- Open Graph / Social Media -->
@@ -27,11 +28,13 @@
 
     <style>
       :root {
-        --bg: #ffffff;
-        --text: #111111;
-        --muted: #666666;
-        --border: #e2e2e2;
-        --device-frame: #18181b;
+        --accent: #501529;
+        --accent-soft: #6a2a40;
+        --bg: #f7f6f4;
+        --card: #ffffff;
+        --text: #1a1a1a;
+        --muted: #6f6b68;
+        --border: #e6e2de;
       }
 
       * {
@@ -47,7 +50,7 @@
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
           sans-serif;
-        background: #ffffff;
+        background: var(--bg);
         color: var(--text);
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
@@ -56,39 +59,74 @@
       .wrap {
         max-width: 1140px;
         margin: 0 auto;
-        padding: 60px 40px 100px;
+        padding: 0 40px;
       }
 
+      /* ── Hero (same look as the app's welcome screen) ───────────── */
+      .hero {
+        background: var(--accent);
+        color: #ffffff;
+        border-radius: 0 0 32px 32px;
+        margin-bottom: 72px;
+      }
+      .hero .wrap {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
       .hero-grid {
         display: grid;
-        grid-template-columns: 1.3fr 1fr;
+        grid-template-columns: 1.2fr 1fr;
         gap: 60px;
         align-items: center;
-        margin-bottom: 72px;
+      }
+
+      .brand {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin: 0 0 36px;
+      }
+      .brand small {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0;
+        margin-left: 2px;
+        opacity: 0.8;
       }
 
       h1 {
         font-size: 44px;
-        font-weight: 600;
+        font-weight: 700;
         margin: 0 0 20px;
         letter-spacing: -0.5px;
         line-height: 1.15;
       }
 
       .lead {
-        font-size: 19px;
-        color: var(--muted);
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.78);
         margin: 0 0 32px;
-        line-height: 1.5;
+        line-height: 1.55;
+        max-width: 520px;
+      }
+
+      .play-link {
+        display: inline-block;
+        flex-shrink: 0;
+      }
+      .play-link img {
+        display: block;
+        height: 56px;
+        width: auto;
       }
 
       .hero-stats {
         display: flex;
         gap: 40px;
+        margin-top: 40px;
         padding-top: 24px;
-        border-top: 1px solid var(--border);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
       }
-
       .stat-item {
         display: flex;
         flex-direction: column;
@@ -99,92 +137,96 @@
       }
       .stat-label {
         font-size: 13px;
-        color: var(--muted);
+        color: rgba(255, 255, 255, 0.65);
       }
 
-      /* ── Android Device Mockup ────────────────────────────────────── */
+      /* ── App mockup (recreated from the real app UI) ─────────────── */
       .mockup-wrapper {
-        background: #ffffff;
-        border: 1px solid var(--border);
-        padding: 40px 24px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        gap: 14px;
+        gap: 16px;
       }
-
       .mockup-hint {
-        font-size: 11.5px;
-        color: var(--muted);
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.65);
         text-align: center;
         margin: 0;
+      }
+
+      .i {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
       }
 
       .android-device {
         position: relative;
         width: 100%;
-        max-width: 280px;
-        background: var(--device-frame);
-        border-radius: 36px;
+        max-width: 290px;
+        background: #18181b;
+        border-radius: 38px;
         padding: 9px;
-        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.14);
       }
-
-      .android-device::before {
-        content: "";
-        position: absolute;
-        top: 80px;
-        right: -3px;
-        width: 3px;
-        height: 40px;
-        background: var(--device-frame);
-        border-radius: 0 2px 2px 0;
-      }
-
+      .android-device::before,
       .android-device::after {
         content: "";
         position: absolute;
-        top: 135px;
         right: -3px;
         width: 3px;
-        height: 75px;
-        background: var(--device-frame);
+        background: #18181b;
         border-radius: 0 2px 2px 0;
+      }
+      .android-device::before {
+        top: 90px;
+        height: 42px;
+      }
+      .android-device::after {
+        top: 148px;
+        height: 76px;
       }
 
       .device-screen {
+        --app-bg: #f7f6f4;
+        --app-border: #e6e2de;
+        --app-muted: #8a8581;
         position: relative;
-        background: #ffffff;
-        border-radius: 28px;
+        background: var(--app-bg);
+        color: #1a1a1a;
+        border-radius: 30px;
         overflow: hidden;
-        border: 1px solid var(--border);
         display: flex;
         flex-direction: column;
-        height: 500px;
+        height: 580px;
+        font-size: 11px;
+        line-height: 1.35;
       }
-
       .camera-hole {
         position: absolute;
-        top: 8px;
+        top: 9px;
         left: 50%;
         transform: translateX(-50%);
         width: 8px;
         height: 8px;
-        background: var(--device-frame);
+        background: #18181b;
         border-radius: 50%;
-        z-index: 10;
+        z-index: 30;
       }
-
       .status-bar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 16px 4px;
-        font-size: 11px;
+        padding: 8px 18px 4px;
+        font-size: 10.5px;
         font-weight: 600;
-        border-bottom: 1px solid var(--border);
+        height: 26px;
         flex-shrink: 0;
       }
       .status-icons {
@@ -193,13 +235,17 @@
         gap: 5px;
       }
 
-      /* ── Swappable screens (Home / Search / Hours / Profile) ─────────── */
-      .app-screen {
-        display: none;
-        flex-direction: column;
+      .viewport {
+        position: relative;
         flex: 1;
         overflow: hidden;
-        animation: screenFade 180ms ease;
+      }
+      .app-screen {
+        position: absolute;
+        inset: 0;
+        display: none;
+        flex-direction: column;
+        animation: screenFade 160ms ease;
       }
       .app-screen.active {
         display: flex;
@@ -212,256 +258,284 @@
           opacity: 1;
         }
       }
-
-      .app-topbar {
-        padding: 10px 14px;
-        font-weight: 800;
-        font-size: 13px;
-        border-bottom: 1px solid var(--border);
-        flex-shrink: 0;
-      }
-
-      .app-composer {
-        padding: 10px 14px;
-        font-size: 11px;
-        color: var(--muted);
-        border-bottom: 1px solid var(--border);
-        background: #ffffff;
-        flex-shrink: 0;
-      }
-
-      .feed-container {
+      .scroll {
         flex: 1;
         overflow-y: auto;
+        scrollbar-width: none;
+      }
+      .scroll::-webkit-scrollbar {
+        display: none;
       }
 
-      .mini-post {
-        padding: 12px 14px;
-        border-bottom: 1px solid var(--border);
+      /* Home */
+      .home-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 16px 10px;
+        flex-shrink: 0;
       }
-      .mini-post:last-child {
-        border-bottom: none;
+      .home-logo {
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: -0.3px;
       }
-      .mini-post-meta {
+      .composer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px 12px;
+        color: var(--app-muted);
+        flex-shrink: 0;
+      }
+      .composer span.ph {
+        flex: 1;
+        font-size: 10.5px;
+      }
+      .avatar {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
         font-size: 11px;
         font-weight: 700;
-        margin-bottom: 3px;
-      }
-      .mini-post-time {
-        font-weight: 400;
-        color: var(--muted);
-      }
-      .mini-post-body {
-        font-size: 11px;
-        margin: 0 0 5px;
-        color: var(--text);
-        line-height: 1.35;
-      }
-      .mini-post-stats {
-        font-size: 10px;
-        color: var(--muted);
-      }
-      .mini-avatar-lg {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #d9d9d9;
-        border: 1px solid var(--text);
-        flex-shrink: 0;
-        display: inline-flex;
+        display: flex;
         align-items: center;
         justify-content: center;
-        color: #888;
-      }
-      .mini-post-actions {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--muted);
-        font-size: 10px;
-      }
-      .mini-post-actions .a {
-        display: flex;
-        align-items: center;
-        gap: 3px;
-      }
-
-      /* ── Search screen ────────────────────────────────────────────── */
-      .search-input-mock {
-        margin: 12px 14px 4px;
-        padding: 9px 12px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        font-size: 11px;
-        color: var(--muted);
-        display: flex;
-        align-items: center;
-        gap: 6px;
         flex-shrink: 0;
       }
-      .search-tags {
-        padding: 10px 14px;
+      .post {
         display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
+        gap: 9px;
+        padding: 12px 16px;
       }
-      .search-tag {
-        font-size: 10.5px;
-        padding: 4px 9px;
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        color: var(--muted);
+      .post-main {
+        flex: 1;
+        min-width: 0;
+      }
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 700;
+        font-size: 11px;
+        margin-bottom: 3px;
+      }
+      .post-meta .t {
+        flex: 1;
+      }
+      .post-meta .time {
+        font-weight: 400;
+        color: var(--app-muted);
+        font-size: 10px;
+      }
+      .post-body {
+        margin: 0 0 7px;
+        font-size: 11px;
+      }
+      .post-body b {
+        color: var(--app-muted);
+        font-weight: 700;
+      }
+      .post-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--app-muted);
+        font-size: 10px;
+      }
+      .post-actions .a {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .post-actions .a:last-child {
+        margin-left: auto;
       }
 
-      /* ── Map screen ───────────────────────────────────────────────── */
-      .map-mock {
+      /* Map */
+      .map-view {
         position: relative;
         flex: 1;
-        background:
-          repeating-linear-gradient(0deg, #f2f2f2 0 1px, transparent 1px 26px),
-          repeating-linear-gradient(90deg, #f2f2f2 0 1px, transparent 1px 26px),
-          #fafafa;
+        background: #ebe8e2;
         overflow: hidden;
+      }
+      .map-view .road {
+        position: absolute;
+        background: #fbfaf8;
+      }
+      .map-view .block {
+        position: absolute;
+        background: #dfe3d8;
+        border-radius: 3px;
       }
       .map-pin {
         position: absolute;
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
+        top: 40%;
+        left: 46%;
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
         background: #fff;
-        border: 2px solid var(--text);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-      }
-      .map-pin.filled {
-        background: var(--text);
-        color: #fff;
-      }
-      .map-sheet {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #fff;
-        border-top: 1px solid var(--border);
-        border-radius: 16px 16px 0 0;
-        padding: 12px 14px 14px;
-        box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.06);
-      }
-      .map-sheet-handle {
-        width: 32px;
-        height: 3px;
-        border-radius: 2px;
-        background: var(--border);
-        margin: 0 auto 10px;
-      }
-      .map-sheet-title {
-        font-size: 11px;
-        font-weight: 700;
-        margin-bottom: 8px;
-      }
-      .map-avatars {
-        display: flex;
-        gap: 8px;
-      }
-      .map-avatar-col {
+        border: 2px solid #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        padding: 5px 4px;
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 3px;
       }
-      .map-avatar-label {
-        font-size: 8.5px;
-        color: var(--muted);
+      .map-pin i {
+        display: block;
+        height: 2px;
+        background: #cfcac4;
+        border-radius: 1px;
       }
-      .map-avatar {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        border: 1.5px solid var(--text);
-        background: #e8e8e8;
-        flex-shrink: 0;
+      .map-pin i:first-child {
+        height: 8px;
+        background: var(--accent);
+        opacity: 0.7;
       }
-      .map-top-buttons {
+      .map-title {
         position: absolute;
-        top: 10px;
+        top: 8px;
+        left: 10px;
         right: 10px;
+        background: #fff;
+        border-radius: 14px;
+        padding: 9px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 15px;
+        font-weight: 800;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      }
+      .map-title .ic {
+        display: flex;
+        gap: 12px;
+      }
+      .map-notice {
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        border-radius: 12px;
+        padding: 8px 10px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 10px;
+        color: #5c5854;
+      }
+      .map-notice span {
+        flex: 1;
+      }
+      .near {
+        background: #fff;
+        border-radius: 18px 18px 0 0;
+        padding: 8px 16px 12px;
+        flex-shrink: 0;
+        box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.08);
+        position: relative;
+        z-index: 2;
+      }
+      .handle {
+        width: 30px;
+        height: 3px;
+        border-radius: 2px;
+        background: #d9d5d0;
+        margin: 0 auto 12px;
+      }
+      .near h4 {
+        margin: 0 0 8px;
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .near-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--app-muted);
+        font-size: 10.5px;
+      }
+      .you {
         display: flex;
         flex-direction: column;
-        gap: 6px;
-        z-index: 5;
+        align-items: center;
+        gap: 2px;
+        font-size: 9.5px;
+        color: var(--app-muted);
       }
-      .map-round-btn {
-        width: 26px;
-        height: 26px;
-        border-radius: 8px;
-        background: var(--text);
-        color: #fff;
+      .you .ring {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1.5px dashed #b9b3ad;
+        color: var(--accent);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 14px;
-        font-weight: 700;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+      .you .ring .i {
+        width: 18px;
+        height: 18px;
       }
 
-      /* ── Jobs / companies screen ─────────────────────────────────── */
+      /* Jobs */
       .jobs-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 14px 14px 10px;
-        flex-shrink: 0;
+        padding: 10px 16px 10px;
         font-size: 17px;
         font-weight: 800;
+        flex-shrink: 0;
       }
-      .jobs-add-btn {
+      .jobs-add {
         width: 24px;
         height: 24px;
-        border-radius: 7px;
-        background: var(--text);
+        border-radius: 8px;
+        background: var(--accent);
         color: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 15px;
-        font-weight: 700;
       }
       .jobs-search {
-        margin: 0 14px 8px;
+        margin: 0 16px 8px;
         padding: 9px 12px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        font-size: 11px;
-        color: var(--muted);
+        background: #fff;
+        border: 1px solid var(--app-border);
+        border-radius: 12px;
+        color: var(--app-muted);
         display: flex;
         align-items: center;
         gap: 6px;
+        font-size: 10.5px;
         flex-shrink: 0;
       }
       .jobs-count {
-        padding: 0 14px 8px;
-        font-size: 10.5px;
-        color: var(--muted);
+        padding: 0 16px 8px;
+        font-size: 10px;
+        color: var(--app-muted);
         flex-shrink: 0;
       }
       .job-row {
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 11px 14px;
-        border-bottom: 1px solid var(--border);
+        padding: 10px 16px;
+        border-top: 1px solid var(--app-border);
       }
       .job-logo {
         width: 30px;
         height: 30px;
-        border-radius: 8px;
-        background: var(--text);
+        border-radius: 10px;
+        background: var(--accent);
         color: #fff;
-        font-size: 12px;
         font-weight: 700;
         display: flex;
         align-items: center;
@@ -473,221 +547,430 @@
         min-width: 0;
       }
       .job-name {
-        font-size: 11.5px;
         font-weight: 700;
+        font-size: 11px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        margin-bottom: 3px;
       }
-      .job-rating-row {
-        display: flex;
-        align-items: center;
-        gap: 4px;
+      .job-rate {
         font-size: 10px;
+        color: var(--app-muted);
       }
-      .job-stars {
+      .job-rate b {
+        color: var(--accent);
         letter-spacing: 1px;
-      }
-      .job-rating-val {
-        font-weight: 700;
-      }
-      .job-rating-val.low {
-        color: var(--muted);
-        text-decoration: underline;
-      }
-      .job-reviews {
-        color: var(--muted);
-      }
-      .job-right {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        flex-shrink: 0;
+        font-weight: 400;
       }
       .job-meta {
         font-size: 10px;
-        color: var(--muted);
-      }
-      .job-chevron {
-        color: var(--muted);
+        color: var(--app-muted);
       }
 
-      /* ── Hours / overtime screen ──────────────────────────────────── */
-      .hours-summary {
-        padding: 14px;
-      }
-      .hours-big {
-        font-size: 22px;
-        font-weight: 700;
-        margin-bottom: 2px;
-      }
-      .hours-sub {
-        font-size: 11px;
-        color: var(--muted);
-        margin-bottom: 16px;
-      }
-      .hours-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 9px 0;
-        border-bottom: 1px solid var(--border);
-        font-size: 11.5px;
-      }
-      .hours-row:last-child {
-        border-bottom: none;
-      }
-      .hours-row .val {
-        font-weight: 700;
-      }
-
-      /* ── Profile screen ───────────────────────────────────────────── */
+      /* Profile */
       .profile-head {
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 16px 14px 12px;
-        border-bottom: 1px solid var(--border);
-      }
-      .profile-avatar-wrap {
-        position: relative;
+        padding: 12px 16px;
         flex-shrink: 0;
       }
-      .profile-avatar-badge {
-        position: absolute;
-        bottom: -2px;
-        right: -2px;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: var(--text);
-        color: #fff;
-        font-size: 10px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1.5px solid #fff;
-      }
-      .profile-avatar {
+      .profile-head .avatar {
         width: 38px;
         height: 38px;
+        position: relative;
+      }
+      .profile-head .avatar::after {
+        content: "+";
+        position: absolute;
+        right: -2px;
+        bottom: -2px;
+        width: 13px;
+        height: 13px;
         border-radius: 50%;
-        background: #d9d9d9;
-        border: 1.5px solid var(--text);
-        flex-shrink: 0;
+        background: #3b0f1e;
+        border: 1.5px solid var(--app-bg);
+        font-size: 9px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #888;
       }
       .profile-name {
+        flex: 1;
         font-size: 13px;
-        font-weight: 700;
+        font-weight: 800;
       }
-      .profile-handle {
-        font-size: 11px;
-        color: var(--muted);
+      .profile-name span {
+        display: block;
+        font-size: 10px;
+        font-weight: 400;
+        color: var(--app-muted);
       }
-      .profile-group-label {
-        font-size: 9.5px;
-        font-weight: 700;
+      .group-label {
+        padding: 12px 16px 4px;
+        font-size: 9px;
         letter-spacing: 0.4px;
         text-transform: uppercase;
-        color: var(--muted);
-        padding: 12px 14px 4px;
+        color: var(--app-muted);
       }
-      .profile-row {
-        padding: 11px 14px;
-        border-bottom: 1px solid var(--border);
-        font-size: 11.5px;
+      .row {
         display: flex;
-        justify-content: space-between;
-        color: var(--text);
+        align-items: center;
+        gap: 8px;
+        padding: 11px 16px;
+        border-bottom: 1px solid var(--app-border);
+        font-size: 11.5px;
       }
-      .profile-row span:last-child {
-        color: var(--muted);
+      .row .grow {
+        flex: 1;
       }
-      .toggle-mock {
-        width: 26px;
-        height: 15px;
+      .row .i:last-child {
+        color: var(--app-muted);
+      }
+      .row[data-open] {
+        cursor: pointer;
+      }
+      .row[data-open]:hover {
+        background: rgba(80, 21, 41, 0.05);
+      }
+      .toggle {
+        width: 28px;
+        height: 16px;
         border-radius: 8px;
-        background: var(--border);
+        background: var(--accent);
         position: relative;
-        display: inline-block;
+        flex-shrink: 0;
       }
-      .toggle-mock::after {
+      .toggle::after {
         content: "";
         position: absolute;
         top: 2px;
-        left: 2px;
-        width: 11px;
-        height: 11px;
+        left: 14px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         background: #fff;
-        transition: left 0.15s ease;
       }
-      .toggle-mock.on {
-        background: var(--text);
+      .toggle.off {
+        background: #d9d5d0;
       }
-      .toggle-mock.on::after {
-        left: 13px;
+      .toggle.off::after {
+        left: 2px;
       }
 
-      /* App Bottom Menu */
+      /* Bottom nav */
       .app-bottom-nav {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        padding: 8px 0;
-        border-top: 1px solid var(--border);
-        background: #ffffff;
+        padding: 7px 4px 5px;
+        border-top: 1px solid var(--app-border);
+        background: var(--app-bg);
         flex-shrink: 0;
       }
-
       .nav-item {
-        color: var(--muted);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        color: var(--app-muted);
+        cursor: pointer;
+        padding: 2px 8px;
+        font-size: 8.5px;
+        font-weight: 500;
+        transition: color 0.15s ease;
+      }
+      .nav-item .i {
+        width: 17px;
+        height: 17px;
+      }
+      .nav-item:hover {
+        color: #1a1a1a;
+      }
+      .nav-item.active {
+        color: #1a1a1a;
+        font-weight: 800;
+      }
+      .android-nav-bar {
+        height: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .android-nav-bar::after {
+        content: "";
+        width: 64px;
+        height: 3px;
+        background: #cfcac4;
+        border-radius: 2px;
+      }
+
+      /* Sheets */
+      .backdrop {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 26px;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 20;
+      }
+      .backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .sheet {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-height: calc(100% - 40px);
+        overflow-y: auto;
+        scrollbar-width: none;
+        background: #fff;
+        border-radius: 20px 20px 0 0;
+        padding: 8px 16px 16px;
+        transform: translateY(105%);
+        transition: transform 0.25s ease;
+        z-index: 25;
+      }
+      .sheet::-webkit-scrollbar {
+        display: none;
+      }
+      .sheet.open {
+        transform: translateY(0);
+      }
+      .sheet .handle {
+        cursor: pointer;
+      }
+      .sheet-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+      .sheet-title .muted {
+        font-weight: 400;
+        color: var(--app-muted);
+        font-size: 11px;
+      }
+      .post-input {
+        width: 100%;
+        height: 78px;
+        resize: none;
+        border: none;
+        outline: none;
+        font: inherit;
+        font-size: 11px;
+        padding: 0;
+        background: transparent;
+        color: #1a1a1a;
+      }
+      .post-input::placeholder {
+        color: var(--app-muted);
+      }
+      .counter {
+        text-align: right;
+        font-size: 9.5px;
+        color: var(--app-muted);
+        margin-bottom: 10px;
+      }
+      .sheet-tools {
+        display: flex;
+        gap: 14px;
+        color: #3d3a37;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--app-border);
+      }
+      .anon {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-top: 12px;
+        color: var(--app-muted);
+        font-size: 10px;
+      }
+      .anon .grow {
+        flex: 1;
+      }
+      .anon b {
+        display: block;
+        color: #1a1a1a;
+        font-size: 10.5px;
+      }
+      .hours-time {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 12px;
+      }
+      .hours-time big {
+        font-size: 19px;
+        font-weight: 700;
+      }
+      .hours-time small {
+        display: block;
+        text-align: right;
+        color: var(--app-muted);
+        font-size: 10px;
+        margin-bottom: 4px;
+      }
+      .pill-btn {
+        background: var(--accent);
+        color: #fff;
+        border-radius: 10px;
+        padding: 7px 14px;
+        font-weight: 700;
+        font-size: 11px;
+        display: inline-block;
+      }
+      .srow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 9px 0;
+        font-size: 11px;
+      }
+      .srow.line {
+        border-top: 1px solid var(--app-border);
+      }
+      .srow .v {
+        font-weight: 700;
+      }
+      .srow.mu {
+        color: #4a4642;
+        padding: 6px 0;
+      }
+      .srow.link {
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .srow.link:hover {
+        color: var(--accent);
+      }
+      .sec-head {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 800;
+        font-size: 11.5px;
+        padding: 10px 0 4px;
+        border-top: 1px solid var(--app-border);
+      }
+      .sec-head span {
+        font-weight: 400;
+        color: var(--app-muted);
+        font-size: 10px;
+      }
+      .cal-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .cal-head b {
+        font-size: 13px;
+      }
+      .cal-head .i {
+        color: var(--app-muted);
+      }
+      .pdf-btn {
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        font-size: 10px;
+        border-radius: 9px;
+        padding: 6px 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .seg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: #efeceb;
+        border-radius: 12px;
+        padding: 0;
+        margin-bottom: 10px;
+        overflow: hidden;
+        font-weight: 700;
+        font-size: 11px;
+        text-align: center;
+      }
+      .seg span {
+        padding: 9px 0;
+        color: var(--app-muted);
+      }
+      .seg span:first-child {
+        background: var(--accent);
+        color: #fff;
+        border-radius: 12px;
+      }
+      .cal-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+        row-gap: 2px;
+        margin-bottom: 8px;
+      }
+      .cal-grid .wd {
+        font-size: 9px;
+        color: var(--app-muted);
+        padding-bottom: 6px;
+      }
+      .cal-grid .d {
+        height: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
-        padding: 4px 12px;
+        gap: 2px;
+        font-size: 11px;
+        color: #8d8985;
         border-radius: 8px;
-        transition:
-          color 0.15s ease,
-          background 0.15s ease;
+        border: 1.5px solid transparent;
       }
-
-      .nav-item:hover {
-        color: var(--text);
+      .cal-grid .d.sel {
+        border-color: #1a1a1a;
+        color: #1a1a1a;
       }
-
-      .nav-item.active {
-        color: var(--text);
-        background: #f3f3f3;
+      .cal-grid .d.on {
+        color: #1a1a1a;
       }
-      .nav-label {
-        font-size: 8.5px;
-        margin-top: 2px;
-        font-weight: 500;
+      .cal-grid .d i {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #3fb57a;
+        display: block;
       }
-
-      .android-nav-bar {
-        height: 12px;
+      .cal-grid .d i.gray {
+        background: #8d8985;
+      }
+      .legend {
         display: flex;
-        align-items: center;
+        flex-wrap: wrap;
         justify-content: center;
-        background: #ffffff;
-        flex-shrink: 0;
+        gap: 3px 10px;
+        padding: 8px 0 10px;
+        border-top: 1px solid var(--app-border);
+        font-size: 8.5px;
+        color: var(--app-muted);
       }
-
-      .android-nav-bar::after {
+      .legend span::before {
         content: "";
-        width: 60px;
-        height: 3px;
-        background: var(--border);
-        border-radius: 2px;
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--c);
+        margin-right: 4px;
+        vertical-align: middle;
       }
 
       /* ── Sections & Features ────────────────────────────────────── */
@@ -695,27 +978,27 @@
         margin-bottom: 72px;
       }
       h2 {
-        font-size: 22px;
+        font-size: 24px;
         font-weight: 700;
         margin: 0 0 28px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid var(--border);
+        letter-spacing: -0.2px;
       }
 
       .features-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+        gap: 20px;
       }
 
       .feature-card {
         border: 1px solid var(--border);
+        border-radius: 16px;
         padding: 24px;
-        background: #ffffff;
+        background: var(--card);
         transition: border-color 0.2s ease;
       }
       .feature-card:hover {
-        border-color: var(--text);
+        border-color: var(--accent);
       }
       .feature-card h3 {
         font-size: 16px;
@@ -732,9 +1015,14 @@
       .faq-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 32px;
+        gap: 20px;
       }
-
+      .faq-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+      }
       .faq-item h3 {
         font-size: 16px;
         font-weight: 700;
@@ -748,39 +1036,28 @@
       }
 
       .cta-block {
-        background: #ffffff;
-        border: 1px solid var(--border);
+        background: var(--accent);
+        color: #ffffff;
+        border-radius: 24px;
         padding: 48px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 32px;
       }
-
       .cta-info h2 {
-        border: none;
-        padding: 0;
         margin-bottom: 8px;
       }
       .cta-info p {
         margin: 0;
-        color: var(--muted);
+        color: rgba(255, 255, 255, 0.78);
         font-size: 15px;
         max-width: 640px;
       }
 
-      .play-link {
-        display: inline-block;
-        flex-shrink: 0;
-      }
-      .play-link img {
-        display: block;
-        height: 56px;
-        width: auto;
-      }
-
       footer {
         margin-top: 80px;
-        padding-top: 28px;
+        padding: 28px 0 60px;
         border-top: 1px solid var(--border);
         font-size: 14px;
         color: var(--muted);
@@ -802,13 +1079,13 @@
         transition: color 0.15s ease;
       }
       footer a:hover {
-        color: var(--text);
+        color: var(--accent);
       }
 
       @media (max-width: 992px) {
         .hero-grid {
           grid-template-columns: 1fr;
-          gap: 40px;
+          gap: 48px;
         }
         .features-grid {
           grid-template-columns: 1fr 1fr;
@@ -816,20 +1093,24 @@
         .cta-block {
           flex-direction: column;
           text-align: center;
-          gap: 24px;
-          align-items: stretch;
+          align-items: center;
         }
         .cta-info p {
           max-width: none;
-        }
-        .play-link {
-          align-self: center;
         }
       }
 
       @media (max-width: 600px) {
         .wrap {
-          padding: 40px 20px 60px;
+          padding: 0 20px;
+        }
+        .hero {
+          border-radius: 0 0 24px 24px;
+          margin-bottom: 48px;
+        }
+        .hero .wrap {
+          padding-top: 40px;
+          padding-bottom: 40px;
         }
         .features-grid,
         .faq-grid {
@@ -837,6 +1118,9 @@
         }
         h1 {
           font-size: 32px;
+        }
+        .hero-stats {
+          gap: 24px;
         }
         .cta-block {
           padding: 32px 24px;
@@ -849,15 +1133,25 @@
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <header class="hero-grid">
+    <header class="hero">
+      <div class="wrap hero-grid">
         <div>
+          <p class="brand">ninetofive<small>app</small></p>
           <h1>Η εργασιακή πραγματικότητα, χωρίς φίλτρα.</h1>
           <p class="lead">
             Το ninetofive App δίνει φωνή στους εργαζόμενους στην Ελλάδα.
             Καταγράψτε ώρες, υπολογίστε υπερωρίες, διαβάστε αξιολογήσεις
             εταιρειών και μοιραστείτε την εμπειρία σας με πλήρη ανωνυμία.
           </p>
+
+          <a
+            class="play-link"
+            href="https://play.google.com/store/apps/details?id=gr.ninetofive.app"
+            target="_blank"
+            rel="noopener"
+          >
+            <img src="playstore.png" alt="Διαθέσιμο στο Google Play" />
+          </a>
 
           <div class="hero-stats">
             <div class="stat-item">
@@ -875,608 +1169,275 @@
           </div>
         </div>
 
-        <!-- Android Smartphone Mockup — interactive: click the bottom nav -->
+        <!-- App mockup — interactive: click the bottom nav -->
         <div class="mockup-wrapper">
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+            <defs>
+              <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9z"/><path d="M13.7 21a2 2 0 01-3.4 0"/></symbol>
+              <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+              <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+              <symbol id="i-chart" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></symbol>
+              <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.4-8.6C.9 9.3 2 5.8 5.2 5c2-.5 3.8.3 4.8 1.9C11 5.300 12.800 4.500 14.800 5c3.200.8 4.300 4.300 2.600 7.400C15 16.600 12 21 12 21z"/></symbol>
+              <symbol id="i-comment" viewBox="0 0 24 24"><path d="M21 11.500a8.500 8.500 0 01-8.500 8.500H6l-3 2 .5-4.200A8.500 8.500 0 1121 11.500z"/></symbol>
+              <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4V3z"/></symbol>
+              <symbol id="i-home" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.500" stroke-dasharray="2.600 2.200"/><circle cx="12" cy="12" r="4"/></symbol>
+              <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.200 7-12a7 7 0 10-14 0c0 5.800 7 12 7 12z"/><circle cx="12" cy="10" r="2.500"/></symbol>
+              <symbol id="i-add" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></symbol>
+              <symbol id="i-jobs" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></symbol>
+              <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.600-7 8-7s8 3 8 7"/></symbol>
+              <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.900 4.900l2.100 2.100M17 17l2.100 2.100M4.900 19.100L7 17M17 7l2.100-2.100"/></symbol>
+              <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+              <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+              <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6l8-3z"/></symbol>
+              <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+              <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+              <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></symbol>
+              <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9M16.500 3.500a2.100 2.100 0 013 3L7 19l-4 1 1-4 12.500-12.500z"/></symbol>
+              <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+              <symbol id="i-doc" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></symbol>
+            </defs>
+          </svg>
+
           <div class="android-device">
             <div class="device-screen">
               <div class="camera-hole" aria-hidden="true"></div>
               <div class="status-bar" aria-hidden="true">
                 <span>9:41</span>
                 <span class="status-icons">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                    <path d="M18.63 13A17.89 17.89 0 0 1 18 8"></path>
-                    <path
-                      d="M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14"
-                    ></path>
-                    <line x1="1" y1="1" x2="23" y2="23"></line>
-                  </svg>
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M2 8.82a15 15 0 0 1 20 0"></path>
-                    <path d="M5 12.86a10 10 0 0 1 14 0"></path>
-                    <path d="M8.5 17a5 5 0 0 1 7 0"></path>
-                    <circle cx="12" cy="20" r="1"></circle>
-                  </svg>
-                  <svg width="16" height="10" viewBox="0 0 24 12" fill="none">
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="20"
-                      height="11"
-                      rx="2.5"
-                      stroke="currentColor"
-                    ></rect>
-                    <rect
-                      x="2"
-                      y="2"
-                      width="16"
-                      height="8"
-                      rx="1.5"
-                      fill="currentColor"
-                    ></rect>
-                    <rect
-                      x="21.5"
-                      y="4"
-                      width="2"
-                      height="4"
-                      rx="1"
-                      fill="currentColor"
-                    ></rect>
-                  </svg>
-                  <span style="font-size: 9px">100%</span>
+                  <svg class="i" style="width:11px;height:11px"><use href="#i-bell"/></svg>
+                  <span style="font-size:9px">100%</span>
                 </span>
               </div>
 
-              <!-- Home -->
-              <div class="app-screen active" data-screen="home">
-                <div
-                  class="app-topbar"
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                  "
-                >
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <path
-                      d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9z"
-                    ></path>
-                  </svg>
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <circle cx="11" cy="11" r="7"></circle>
-                    <line x1="20" y1="20" x2="16.5" y2="16.5"></line>
-                  </svg>
-                </div>
-                <div
-                  class="app-composer"
-                  style="display: flex; align-items: center; gap: 8px"
-                >
-                  <span
-                    class="mini-avatar-lg"
-                    aria-hidden="true"
-                    style="flex-shrink: 0"
-                  ></span>
-                  <span style="flex: 1">Τι έγινε στη δουλειά σήμερα;</span>
-                  <svg
-                    width="13"
-                    height="13"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                    <path d="M21 15l-5-5L5 21"></path>
-                  </svg>
-                  <svg
-                    width="13"
-                    height="13"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <line x1="18" y1="20" x2="18" y2="10"></line>
-                    <line x1="12" y1="20" x2="12" y2="4"></line>
-                    <line x1="6" y1="20" x2="6" y2="14"></line>
-                  </svg>
-                </div>
-                <div class="feed-container">
-                  <div class="mini-post">
-                    <div
-                      class="mini-post-meta"
-                      style="display: flex; align-items: center; gap: 6px"
-                    >
-                      <span class="mini-avatar-lg" aria-hidden="true"></span>
-                      <span style="flex: 1"
-                        >Ανώνυμος <span class="mini-post-time">• 1ω</span></span
-                      >
-                      <span style="color: var(--muted)">•••</span>
+              <div class="viewport">
+                <!-- Home -->
+                <div class="app-screen active" data-screen="home">
+                  <div class="home-top">
+                    <svg class="i" style="width:16px;height:16px"><use href="#i-bell"/></svg>
+                    <span class="home-logo">ninetofive</span>
+                    <svg class="i" style="width:16px;height:16px"><use href="#i-search"/></svg>
+                  </div>
+                  <div class="composer">
+                    <span class="avatar">Γ</span>
+                    <span class="ph">Τι έγινε στη δουλειά σήμερα;</span>
+                    <svg class="i"><use href="#i-image"/></svg>
+                    <svg class="i"><use href="#i-chart"/></svg>
+                  </div>
+                  <div class="scroll">
+                    <div class="post">
+                      <span class="avatar">N</span>
+                      <div class="post-main">
+                        <div class="post-meta"><span class="t">ninetofive</span><span class="time">30μ</span><span class="time">•••</span></div>
+                        <p class="post-body">Σήμερα με κάλεσαν στο γραφείο και μου είπαν ότι η σύμβασή μου λύνεται άμεσα. Κανένα… <b>Περισσότερα</b></p>
+                        <div class="post-actions">
+                          <span class="a"><svg class="i"><use href="#i-heart"/></svg>0</span>
+                          <span class="a"><svg class="i"><use href="#i-comment"/></svg>0</span>
+                          <span class="a"><svg class="i"><use href="#i-bookmark"/></svg></span>
+                        </div>
+                      </div>
                     </div>
-                    <p class="mini-post-body">
-                      Η χθεσινή συνέντευξη στην εταιρεία δεν είχε καμία σχέση εν
-                      τέλει με τα πραγματικά ζητούμενα και ο μισθός ήταν
-                      ανακριβής. Ελπίζω η αξιολόγηση να προετοιμάσει τους
-                      επόμενους.
-                    </p>
-                    <div class="mini-post-actions">
-                      <span class="a"
-                        ><svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            d="M12 21s-6.7-4.3-9.3-8.2C.8 9.7 1.9 6 5.1 5c2-.6 3.9.2 4.9 1.8C11 5.2 12.9 4.4 14.9 5c3.2 1 4.3 4.7 2.4 7.8C19.7 16.7 12 21 12 21z"
-                          ></path>
-                        </svg>
-                        18</span
-                      >
-                      <span class="a"
-                        ><svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            d="M21 11.5a8.5 8.5 0 01-8.5 8.5H6l-3 2 .5-4.2A8.5 8.5 0 1121 11.5z"
-                          ></path>
-                        </svg>
-                        0</span
-                      >
-                      <span class="a" style="margin-left: auto"
-                        ><svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path d="M6 3h12v18l-6-4-6 4V3z"></path></svg
-                      ></span>
+                    <div class="post">
+                      <span class="avatar">N</span>
+                      <div class="post-main">
+                        <div class="post-meta"><span class="t">ninetofive</span><span class="time">30μ</span><span class="time">•••</span></div>
+                        <p class="post-body">Κάθε φορά που προτείνω κάτι σε private συζήτηση, το επόμενο meeting το… <b>Περισσότερα</b></p>
+                        <div class="post-actions">
+                          <span class="a"><svg class="i"><use href="#i-heart"/></svg>1</span>
+                          <span class="a"><svg class="i"><use href="#i-comment"/></svg>0</span>
+                          <span class="a"><svg class="i"><use href="#i-bookmark"/></svg></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="post">
+                      <span class="avatar">N</span>
+                      <div class="post-main">
+                        <div class="post-meta"><span class="t">ninetofive</span><span class="time">30μ</span><span class="time">•••</span></div>
+                        <p class="post-body">Από τον Σεπτέμβριο δεν έχω δει μισθό. Κάθε φορά που ρωτάω λέει πρόβλημα ρευστότητας. Συνεχίζω να δουλεύω γιατί φοβάμαι ότι αν φύγω θα χάσω και τα δεδουλευμένα.</p>
+                        <div class="post-actions">
+                          <span class="a"><svg class="i"><use href="#i-heart"/></svg>0</span>
+                          <span class="a"><svg class="i"><use href="#i-comment"/></svg>0</span>
+                          <span class="a"><svg class="i"><use href="#i-bookmark"/></svg></span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="mini-post">
-                    <div
-                      class="mini-post-meta"
-                      style="display: flex; align-items: center; gap: 6px"
-                    >
-                      <span class="mini-avatar-lg" aria-hidden="true"></span>
-                      <span style="flex: 1"
-                        >Ανώνυμος <span class="mini-post-time">• 3ω</span></span
-                      >
-                      <span style="color: var(--muted)">•••</span>
+                </div>
+
+                <!-- Map -->
+                <div class="app-screen" data-screen="map">
+                  <div class="map-view">
+                    <span class="block" style="left:6%;top:22%;width:26%;height:16%"></span>
+                    <span class="block" style="left:62%;top:14%;width:30%;height:20%"></span>
+                    <span class="block" style="left:12%;top:60%;width:22%;height:20%"></span>
+                    <span class="block" style="left:68%;top:56%;width:24%;height:14%"></span>
+                    <span class="road" style="left:0;right:0;top:38%;height:5px"></span>
+                    <span class="road" style="left:0;right:0;top:74%;height:4px"></span>
+                    <span class="road" style="top:0;bottom:0;left:40%;width:5px"></span>
+                    <span class="road" style="top:0;bottom:0;left:76%;width:4px"></span>
+                    <span class="road" style="left:-10%;right:-10%;top:55%;height:3px;transform:rotate(-18deg)"></span>
+                    <div class="map-pin"><i></i><i></i><i></i></div>
+                    <div class="map-title">
+                      <span>Εμπειρίες</span>
+                      <span class="ic">
+                        <svg class="i" style="width:16px;height:16px"><use href="#i-plus"/></svg>
+                        <svg class="i" style="width:16px;height:16px"><use href="#i-layers"/></svg>
+                      </span>
                     </div>
-                    <p class="mini-post-body">
-                      3 μήνες απλήρωτες υπερωρίες. Σήμερα καταγράφηκαν επίσημα
-                      στο σύστημα.
-                    </p>
-                    <div class="mini-post-actions">
-                      <span class="a"
-                        ><svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            d="M12 21s-6.7-4.3-9.3-8.2C.8 9.7 1.9 6 5.1 5c2-.6 3.9.2 4.9 1.8C11 5.2 12.9 4.4 14.9 5c3.2 1 4.3 4.7 2.4 7.8C19.7 16.7 12 21 12 21z"
-                          ></path>
-                        </svg>
-                        14</span
-                      >
-                      <span class="a"
-                        ><svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            d="M21 11.5a8.5 8.5 0 01-8.5 8.5H6l-3 2 .5-4.2A8.5 8.5 0 1121 11.5z"
-                          ></path>
-                        </svg>
-                        0</span
-                      >
-                      <span class="a" style="margin-left: auto"
-                        ><svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path d="M6 3h12v18l-6-4-6 4V3z"></path></svg
-                      ></span>
+                    <div class="map-notice">
+                      <svg class="i"><use href="#i-shield"/></svg>
+                      <span>Οι τοποθεσίες είναι κατά προσέγγιση για προστασία ιδιωτικότητας.</span>
+                      <svg class="i" style="width:11px;height:11px"><use href="#i-x"/></svg>
                     </div>
                   </div>
-                  <div class="mini-post">
-                    <div
-                      class="mini-post-meta"
-                      style="display: flex; align-items: center; gap: 6px"
-                    >
-                      <span class="mini-avatar-lg" aria-hidden="true"></span>
-                      <span style="flex: 1"
-                        >Μαρία Κ. <span class="mini-post-time">• 6ω</span></span
-                      >
-                      <span style="color: var(--muted)">•••</span>
+                  <div class="near">
+                    <div class="handle"></div>
+                    <h4>Κοντά σου</h4>
+                    <div class="near-row">
+                      <div class="you">
+                        <span class="ring"><svg class="i"><use href="#i-plus"/></svg></span>
+                        Εσύ
+                      </div>
+                      <span>Κανένα post τις τελευταίες 8 ώρες. Ανέβασε το πρώτο.</span>
                     </div>
-                    <p class="mini-post-body">
-                      Αλλαγή βάρδιας χωρίς πρόβλημα. Πρώτη φορά υπάρχει πλήρης
-                      διαφάνεια.
-                    </p>
-                    <div class="mini-post-actions">
-                      <span class="a"
-                        ><svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            d="M12 21s-6.7-4.3-9.3-8.2C.8 9.7 1.9 6 5.1 5c2-.6 3.9.2 4.9 1.8C11 5.2 12.9 4.4 14.9 5c3.2 1 4.3 4.7 2.4 7.8C19.7 16.7 12 21 12 21z"
-                          ></path>
-                        </svg>
-                        8</span
-                      >
-                      <span class="a"
-                        ><svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            d="M21 11.5a8.5 8.5 0 01-8.5 8.5H6l-3 2 .5-4.2A8.5 8.5 0 1121 11.5z"
-                          ></path>
-                        </svg>
-                        0</span
-                      >
-                      <span class="a" style="margin-left: auto"
-                        ><svg
-                          width="11"
-                          height="11"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path d="M6 3h12v18l-6-4-6 4V3z"></path></svg
-                      ></span>
+                  </div>
+                </div>
+
+                <!-- Jobs -->
+                <div class="app-screen" data-screen="jobs">
+                  <div class="jobs-header">
+                    <span>Εταιρείες</span>
+                    <span class="jobs-add"><svg class="i"><use href="#i-plus"/></svg></span>
+                  </div>
+                  <div class="jobs-search">
+                    <svg class="i" style="width:12px;height:12px"><use href="#i-search"/></svg>
+                    Αναζήτηση εταιρείας...
+                  </div>
+                  <div class="jobs-count">3 εταιρεία/-ες</div>
+                  <div class="scroll">
+                    <div class="job-row">
+                      <span class="job-logo">Π</span>
+                      <div class="job-info">
+                        <div class="job-name">Παράδειγμα Εταιρείας 1</div>
+                        <div class="job-rate"><b>★★★★★</b> 5.0 · 1 αξιολ.</div>
+                      </div>
+                      <span class="job-meta">Λιανεμπόριο</span>
                     </div>
+                    <div class="job-row">
+                      <span class="job-logo">Π</span>
+                      <div class="job-info">
+                        <div class="job-name">Παράδειγμα Εταιρείας 2</div>
+                        <div class="job-rate"><b>★★★★★</b> 5.0 · 1 αξιολ.</div>
+                      </div>
+                      <span class="job-meta">Τεχνολογία</span>
+                    </div>
+                    <div class="job-row">
+                      <span class="job-logo">Π</span>
+                      <div class="job-info">
+                        <div class="job-name">Παράδειγμα Εταιρείας 3</div>
+                        <div class="job-rate"><b>★★☆☆☆</b> 1.5 · 1 αξιολ.</div>
+                      </div>
+                      <span class="job-meta">Εστίαση</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Profile -->
+                <div class="app-screen" data-screen="profile">
+                  <div class="profile-head">
+                    <span class="avatar"><svg class="i" style="width:18px;height:18px"><use href="#i-user"/></svg></span>
+                    <div class="profile-name">user_577301<span>@User4736</span></div>
+                    <svg class="i" style="width:16px;height:16px"><use href="#i-gear"/></svg>
+                  </div>
+                  <div class="scroll">
+                    <div class="group-label">Λογαριασμός</div>
+                    <div class="row"><svg class="i"><use href="#i-jobs"/></svg><span class="grow">Στοιχεία εργασίας</span><svg class="i"><use href="#i-next"/></svg></div>
+                    <div class="row"><svg class="i"><use href="#i-user"/></svg><span class="grow">Ταυτότητα & Ονόματα</span><svg class="i"><use href="#i-next"/></svg></div>
+                    <div class="group-label">Δραστηριότητα</div>
+                    <div class="row"><svg class="i"><use href="#i-pin"/></svg><span class="grow">Work Status</span><svg class="i"><use href="#i-next"/></svg></div>
+                    <div class="row"><svg class="i"><use href="#i-bookmark"/></svg><span class="grow">Αποθηκευμένα</span><svg class="i"><use href="#i-next"/></svg></div>
+                    <div class="row"><svg class="i"><use href="#i-comment"/></svg><span class="grow">Απαντήσεις</span><svg class="i"><use href="#i-next"/></svg></div>
+                    <div class="group-label">Εργαλεία</div>
+                    <div class="row"><svg class="i"><use href="#i-doc"/></svg><span class="grow">Εβδομαδιαίο Πρόγραμμα</span><svg class="i"><use href="#i-next"/></svg></div>
+                    <div class="row" data-open="hours" role="button" tabindex="0"><svg class="i"><use href="#i-chart"/></svg><span class="grow">Ώρες & Υπερωρίες</span><svg class="i"><use href="#i-next"/></svg></div>
+                    <div class="group-label">Εφαρμογή</div>
+                    <div class="row"><svg class="i"><use href="#i-eye"/></svg><span class="grow">Σκούρο θέμα</span><span class="toggle off"></span></div>
                   </div>
                 </div>
               </div>
 
-              <!-- Map -->
-              <div class="app-screen" data-screen="map">
-                <div class="map-mock">
-                  <div class="map-top-buttons">
-                    <span class="map-round-btn">+</span>
-                    <span class="map-round-btn"
-                      ><svg
-                        width="13"
-                        height="13"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                        <polyline points="2 17 12 22 22 17"></polyline>
-                        <polyline points="2 12 12 17 22 12"></polyline></svg
-                    ></span>
-                  </div>
-                  <div class="map-pin filled" style="top: 30%; left: 45%">
-                    3
-                  </div>
-                  <div class="map-pin" style="top: 48%; left: 68%">🙂</div>
-                  <div class="map-pin" style="top: 66%; left: 30%">🙂</div>
-                  <div class="map-sheet">
-                    <div class="map-sheet-handle"></div>
-                    <div class="map-sheet-title">Κοντά σου</div>
-                    <div class="map-avatars">
-                      <div class="map-avatar-col">
-                        <span class="map-avatar"></span
-                        ><span class="map-avatar-label">Εσύ</span>
-                      </div>
-                      <div class="map-avatar-col">
-                        <span class="map-avatar"></span>
-                      </div>
-                      <div class="map-avatar-col">
-                        <span class="map-avatar"></span>
-                      </div>
-                      <div class="map-avatar-col">
-                        <span class="map-avatar"></span>
-                      </div>
-                      <div class="map-avatar-col">
-                        <span class="map-avatar"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Jobs / Companies -->
-              <div class="app-screen" data-screen="jobs">
-                <div class="jobs-header">
-                  <span>Εταιρείες</span>
-                  <span class="jobs-add-btn">+</span>
-                </div>
-                <div class="jobs-search">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                  Αναζήτηση εταιρείας...
-                </div>
-                <div class="jobs-count">3 εταιρεία/-ες</div>
-                <div class="feed-container">
-                  <div class="job-row">
-                    <span class="job-logo">Π</span>
-                    <div class="job-info">
-                      <div class="job-name">Παράδειγμα Εταιρείας 1</div>
-                      <div class="job-rating-row">
-                        <span class="job-stars">★★★★★</span>
-                        <span class="job-rating-val">5.0</span>
-                        <span class="job-reviews">· 1 αξιολ.</span>
-                      </div>
-                    </div>
-                    <div class="job-right">
-                      <div class="job-meta">Λιανεμπόριο</div>
-                      <span class="job-chevron">›</span>
-                    </div>
-                  </div>
-                  <div class="job-row">
-                    <span class="job-logo">Π</span>
-                    <div class="job-info">
-                      <div class="job-name">Παράδειγμα Εταιρείας 2</div>
-                      <div class="job-rating-row">
-                        <span class="job-stars">★★★★★</span>
-                        <span class="job-rating-val">5.0</span>
-                        <span class="job-reviews">· 1 αξιολ.</span>
-                      </div>
-                    </div>
-                    <div class="job-right">
-                      <div class="job-meta">Τεχνολογία</div>
-                      <span class="job-chevron">›</span>
-                    </div>
-                  </div>
-                  <div class="job-row">
-                    <span class="job-logo">Π</span>
-                    <div class="job-info">
-                      <div class="job-name">Παράδειγμα Εταιρείας 3</div>
-                      <div class="job-rating-row">
-                        <span class="job-stars">★★☆☆☆</span>
-                        <span class="job-rating-val low">1.5</span>
-                        <span class="job-reviews">· 1 αξιολ.</span>
-                      </div>
-                    </div>
-                    <div class="job-right">
-                      <div class="job-meta">Εστίαση</div>
-                      <span class="job-chevron">›</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Profile -->
-              <div class="app-screen" data-screen="profile">
-                <div class="profile-head">
-                  <span class="profile-avatar-wrap">
-                    <span class="profile-avatar" aria-hidden="true">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <circle cx="12" cy="8" r="4"></circle>
-                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
-                      </svg>
-                    </span>
-                    <span class="profile-avatar-badge">+</span>
-                  </span>
-                  <div style="flex: 1">
-                    <div class="profile-name">user_577301</div>
-                    <div class="profile-handle">@User4736</div>
-                  </div>
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path
-                      d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.32 9c.14.31.22.65.22 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="feed-container">
-                  <div class="profile-group-label">Λογαριασμός</div>
-                  <div class="profile-row">
-                    <span>Στοιχεία εργασίας</span><span>›</span>
-                  </div>
-                  <div class="profile-row">
-                    <span>Ταυτότητα & Ονόματα</span><span>›</span>
-                  </div>
-                  <div class="profile-group-label">Δραστηριότητα</div>
-                  <div class="profile-row">
-                    <span>Work Status</span><span>›</span>
-                  </div>
-                  <div class="profile-row">
-                    <span>Αποθηκευμένα</span><span>›</span>
-                  </div>
-                  <div class="profile-row">
-                    <span>Αποκλεισμένοι & περιορισμένοι</span><span>›</span>
-                  </div>
-                  <div class="profile-row">
-                    <span>Απαντήσεις</span><span>›</span>
-                  </div>
-                  <div class="profile-group-label">Εργαλεία</div>
-                  <div class="profile-row">
-                    <span>Εβδομαδιαίο Πρόγραμμα</span><span>›</span>
-                  </div>
-                  <div class="profile-row">
-                    <span>Ώρες & Υπερωρίες</span><span>›</span>
-                  </div>
-                  <div class="profile-group-label">Εφαρμογή</div>
-                  <div class="profile-row">
-                    <span>Σκούρο θέμα</span><span class="toggle-mock on"></span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- App Bottom Menu -->
               <div class="app-bottom-nav">
-                <span
-                  class="nav-item active"
-                  data-target="home"
-                  role="button"
-                  tabindex="0"
-                  aria-label="Αρχική"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-                    ></path>
-                  </svg>
-                  <span class="nav-label">Home</span>
-                </span>
-                <span
-                  class="nav-item"
-                  data-target="map"
-                  role="button"
-                  tabindex="0"
-                  aria-label="Χάρτης"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <polygon
-                      points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"
-                    ></polygon>
-                    <line x1="8" y1="2" x2="8" y2="18"></line>
-                    <line x1="16" y1="6" x2="16" y2="22"></line>
-                  </svg>
-                  <span class="nav-label">Map</span>
-                </span>
-                <span
-                  class="nav-item"
-                  data-target="jobs"
-                  role="button"
-                  tabindex="0"
-                  aria-label="Εταιρείες"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <rect x="2" y="7" width="20" height="14" rx="2"></rect>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                  </svg>
-                  <span class="nav-label">Jobs</span>
-                </span>
-                <span
-                  class="nav-item"
-                  data-target="profile"
-                  role="button"
-                  tabindex="0"
-                  aria-label="Προφίλ"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                  <span class="nav-label">Profile</span>
-                </span>
+                <span class="nav-item active" data-target="home" role="button" tabindex="0" aria-label="Αρχική"><svg class="i"><use href="#i-home"/></svg>Home</span>
+                <span class="nav-item" data-target="map" role="button" tabindex="0" aria-label="Χάρτης"><svg class="i"><use href="#i-pin"/></svg>Map</span>
+                <span class="nav-item" data-open="post" role="button" tabindex="0" aria-label="Νέο νήμα"><svg class="i"><use href="#i-add"/></svg>Add</span>
+                <span class="nav-item" data-target="jobs" role="button" tabindex="0" aria-label="Εταιρείες"><svg class="i"><use href="#i-jobs"/></svg>Jobs</span>
+                <span class="nav-item" data-target="profile" role="button" tabindex="0" aria-label="Προφίλ"><svg class="i"><use href="#i-user"/></svg>Profile</span>
+              </div>
+              <div class="android-nav-bar"></div>
+
+              <!-- Sheets -->
+              <div class="backdrop" id="backdrop"></div>
+
+              <div class="sheet" id="sheet-post">
+                <div class="handle" data-close></div>
+                <div class="sheet-title"><span>Νέο νήμα</span><span class="muted" data-close style="cursor:pointer">Δημοσίευση</span></div>
+                <textarea class="post-input" id="post-input" maxlength="500" placeholder="Μοιράσου κάτι..."></textarea>
+                <div class="counter"><span id="post-count">0</span>/500</div>
+                <div class="sheet-tools">
+                  <svg class="i" style="width:16px;height:16px"><use href="#i-image"/></svg>
+                  <svg class="i" style="width:16px;height:16px"><use href="#i-chart"/></svg>
+                </div>
+                <div class="anon">
+                  <svg class="i"><use href="#i-eye"/></svg>
+                  <span class="grow">Ανώνυμη δημοσίευση<b>Θα εμφανιστείς ως: user_577301</b></span>
+                  <span class="toggle off"></span>
+                </div>
               </div>
 
-              <div class="android-nav-bar"></div>
+              <div class="sheet" id="sheet-hours">
+                <div class="handle" data-close></div>
+                <div class="sheet-title"><span>Ώρες & Υπερωρίες</span></div>
+                <div class="hours-time">
+                  <big>10:00 — 18:00</big>
+                  <div><small>Εκτός βάρδιας</small><span class="pill-btn">Υπερωρία</span></div>
+                </div>
+                <div class="srow line"><span style="color:#4a4642">Προσέλευση</span><span class="v">10:00 <svg class="i" style="width:10px;height:10px;color:#8a8581"><use href="#i-pencil"/></svg></span></div>
+                <div class="srow line"><span style="color:#4a4642">Αποχώρηση</span><span class="v">— <svg class="i" style="width:10px;height:10px;color:#8a8581"><use href="#i-pencil"/></svg></span></div>
+                <div class="srow line link" data-open="calendar" role="button" tabindex="0"><span>Ημερολόγιο εργασίας</span><svg class="i"><use href="#i-next"/></svg></div>
+                <div class="sec-head">Αναμενόμενες απολαβές<span>5ήμερο · 8ωρο</span></div>
+                <div class="srow mu"><span>Ημερομίσθιο</span><span class="v">€45.00</span></div>
+                <div class="srow mu"><span>Ωρομίσθιο</span><span class="v">€5.63</span></div>
+                <div class="srow mu"><span>Δώρο Χριστουγέννων</span><span class="v">€240</span></div>
+                <div class="srow mu"><span>Επίδομα αδείας</span><span class="v">€0</span></div>
+                <div class="srow mu"><span>Δώρο Πάσχα</span><span class="v">€0</span></div>
+                <div class="srow mu"><span>Διαθέσιμες ημέρες άδειας</span><span class="v">18 / 20 ημέρες</span></div>
+                <div class="srow mu"><span>Αποζημίωση απόλυσης</span><span class="v">—</span></div>
+              </div>
+
+              <div class="sheet" id="sheet-calendar">
+                <div class="handle" data-close></div>
+                <div class="cal-head">
+                  <svg class="i" style="width:16px;height:16px"><use href="#i-prev"/></svg>
+                  <b>Οκτώβριος 2026</b>
+                  <span class="pdf-btn"><svg class="i" style="width:11px;height:11px"><use href="#i-doc"/></svg>PDF</span>
+                </div>
+                <div class="seg"><span>Ημερολόγιο</span><span>Σημειώσεις</span></div>
+                <div class="cal-grid" id="cal-grid">
+                  <span class="wd">Δε</span><span class="wd">Τρ</span><span class="wd">Τε</span><span class="wd">Πε</span><span class="wd">Πα</span><span class="wd">Σα</span><span class="wd">Κυ</span>
+                </div>
+                <div class="legend">
+                  <span style="--c:#f2994a">Κανονική</span><span style="--c:#eb5757">Αναρρωτική</span><span style="--c:#8a7fd1">Γονική</span><span style="--c:#501529">Υπερωρία</span><span style="--c:#3fb57a">Σημείωση</span>
+                </div>
+                <div class="srow mu"><span>Εργάσιμες ημέρες</span><span class="v">2 ημέρες</span></div>
+                <div class="srow mu"><span>Άδειες μήνα</span><span class="v">0 κανονικές</span></div>
+              </div>
             </div>
           </div>
-          <p class="mockup-hint">
-            Πάτα τα εικονίδια για να περιηγηθείς στην εφαρμογή
-          </p>
+          <p class="mockup-hint">Πάτα τα εικονίδια για να περιηγηθείς στην εφαρμογή</p>
         </div>
-      </header>
+      </div>
+    </header>
 
+    <div class="wrap">
       <main>
         <section>
           <h2>Βασικές Λειτουργίες</h2>
@@ -1549,11 +1510,10 @@
               <p>Όχι. Η εφαρμογή είναι δωρεάν για όλους τους εργαζόμενους.</p>
             </div>
             <div class="faq-item">
-              <h3>Πού θα είναι διαθέσιμη;</h3>
+              <h3>Πού μπορώ να το βρω;</h3>
               <p>
-                Η εφαρμογή θα είναι σύντομα διαθέσιμη για συσκευές Android μέσω
-                του Google Play Store. Αυτή τη στιγμή βρίσκεται σε δοκιμαστικό
-                στάδιο.
+                Η εφαρμογή είναι διαθέσιμη για συσκευές Android στο Google Play
+                Store.
               </p>
             </div>
           </div>
@@ -1586,35 +1546,70 @@
 
     <script>
       (function () {
-        var navItems = document.querySelectorAll(".nav-item");
-        var screens = document.querySelectorAll(".app-screen");
+        var screen = document.querySelector(".device-screen");
+        var navItems = screen.querySelectorAll(".nav-item[data-target]");
+        var screens = screen.querySelectorAll(".app-screen");
+        var backdrop = document.getElementById("backdrop");
+        var sheets = screen.querySelectorAll(".sheet");
 
         function activate(target) {
+          closeSheets();
           navItems.forEach(function (item) {
-            item.classList.toggle(
-              "active",
-              item.getAttribute("data-target") === target,
-            );
+            item.classList.toggle("active", item.getAttribute("data-target") === target);
           });
-          screens.forEach(function (screen) {
-            screen.classList.toggle(
-              "active",
-              screen.getAttribute("data-screen") === target,
-            );
+          screens.forEach(function (sc) {
+            sc.classList.toggle("active", sc.getAttribute("data-screen") === target);
+          });
+        }
+
+        function closeSheets() {
+          sheets.forEach(function (sh) { sh.classList.remove("open"); });
+          backdrop.classList.remove("open");
+        }
+
+        function openSheet(name) {
+          sheets.forEach(function (sh) { sh.classList.remove("open"); });
+          document.getElementById("sheet-" + name).classList.add("open");
+          backdrop.classList.add("open");
+        }
+
+        function bind(el, fn) {
+          el.addEventListener("click", fn);
+          el.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); }
           });
         }
 
         navItems.forEach(function (item) {
-          item.addEventListener("click", function () {
-            activate(item.getAttribute("data-target"));
-          });
-          item.addEventListener("keydown", function (e) {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              activate(item.getAttribute("data-target"));
-            }
-          });
+          bind(item, function () { activate(item.getAttribute("data-target")); });
         });
+        screen.querySelectorAll("[data-open]").forEach(function (el) {
+          bind(el, function () { openSheet(el.getAttribute("data-open")); });
+        });
+        screen.querySelectorAll("[data-close]").forEach(function (el) {
+          el.addEventListener("click", closeSheets);
+        });
+        backdrop.addEventListener("click", closeSheets);
+
+        // Calendar (October 2026 starts on Thursday)
+        var grid = document.getElementById("cal-grid");
+        for (var k = 0; k < 3; k++) grid.appendChild(document.createElement("span"));
+        for (var d = 1; d <= 31; d++) {
+          var cell = document.createElement("span");
+          cell.className = "d" + (d === 15 ? " sel on" : d === 16 ? " on" : "");
+          cell.textContent = d;
+          if (d === 15 || d === 16) {
+            var dot = document.createElement("i");
+            if (d === 16) dot.className = "gray";
+            cell.appendChild(dot);
+          }
+          grid.appendChild(cell);
+        }
+
+        // Post counter
+        var input = document.getElementById("post-input");
+        var count = document.getElementById("post-count");
+        input.addEventListener("input", function () { count.textContent = input.value.length; });
       })();
     </script>
   </body>
