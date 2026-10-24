@@ -768,6 +768,16 @@
         max-width: 640px;
       }
 
+      .play-link {
+        display: inline-block;
+        flex-shrink: 0;
+      }
+      .play-link img {
+        display: block;
+        height: 56px;
+        width: auto;
+      }
+
       footer {
         margin-top: 80px;
         padding-top: 28px;
@@ -811,6 +821,9 @@
         }
         .cta-info p {
           max-width: none;
+        }
+        .play-link {
+          align-self: center;
         }
       }
 
@@ -1548,13 +1561,17 @@
 
         <section class="cta-block">
           <div class="cta-info">
-            <h2>Σύντομα στο Google Play</h2>
-            <p>
-              Το ninetofive App βρίσκεται ακόμα σε δοκιμαστικό στάδιο και
-              αναζητούμε testers. Θα είναι διαθέσιμο σύντομα στο Google Play
-              Store.
-            </p>
+            <h2>Διαθέσιμο στο Google Play</h2>
+            <p>Βρες το εδώ και κατέβασέ το δωρεάν στη συσκευή σου.</p>
           </div>
+          <a
+            class="play-link"
+            href="ΒΑΛΕ_ΕΔΩ_ΤΟ_LINK_ΤΟΥ_PLAY_STORE"
+            target="_blank"
+            rel="noopener"
+          >
+            <img src="playstore.png" alt="Διαθέσιμο στο Google Play" />
+          </a>
         </section>
       </main>
 
