@@ -137,6 +137,7 @@
         align-items: center;
         gap: 16px;
       }
+
       .mockup-hint {
         font-size: 12px;
         color: rgba(255, 255, 255, 0.65);
@@ -378,6 +379,20 @@
         background: var(--accent);
         opacity: 0.7;
       }
+      .map-pin-e {
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2.5px solid var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        line-height: 1;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
       .map-title {
         position: absolute;
         top: 8px;
@@ -437,10 +452,44 @@
       }
       .near-row {
         display: flex;
-        align-items: center;
-        gap: 12px;
+        align-items: flex-start;
+        gap: 10px;
         color: var(--app-muted);
         font-size: 10.5px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .near-row::-webkit-scrollbar {
+        display: none;
+      }
+      .near-row > * {
+        flex-shrink: 0;
+      }
+      .story {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        font-size: 9.5px;
+        color: var(--app-muted);
+      }
+      .story .ring-s {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 2px solid var(--accent);
+        padding: 2px;
+        display: flex;
+      }
+      .story .ring-s span {
+        flex: 1;
+        border-radius: 50%;
+        background: #f0ecee;
+        font-size: 19px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .you {
         display: flex;
@@ -451,8 +500,8 @@
         color: var(--app-muted);
       }
       .you .ring {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         border-radius: 50%;
         border: 1.5px dashed #b9b3ad;
         color: var(--accent);
@@ -1323,6 +1372,10 @@
                     <span class="road" style="top:0;bottom:0;left:76%;width:4px"></span>
                     <span class="road" style="left:-10%;right:-10%;top:55%;height:3px;transform:rotate(-18deg)"></span>
                     <div class="map-pin"><i></i><i></i><i></i></div>
+                    <div class="map-pin-e" style="top:22%;left:12%">😔</div>
+                    <div class="map-pin-e" style="top:26%;left:72%">😤</div>
+                    <div class="map-pin-e" style="top:63%;left:18%">😌</div>
+                    <div class="map-pin-e" style="top:58%;left:70%">😳</div>
                     <div class="map-title">
                       <span>Εμπειρίες</span>
                       <span class="ic">
@@ -1344,7 +1397,21 @@
                         <span class="ring"><svg class="i"><use href="#i-plus"/></svg></span>
                         Εσύ
                       </div>
-                      <span>Κανένα post τις τελευταίες 8 ώρες. Ανέβασε το πρώτο.</span>
+                      <div class="story">
+                        <span class="ring-s"><span>😔</span></span>
+                      </div>
+                      <div class="story">
+                        <span class="ring-s"><span>😤</span></span>
+                      </div>
+                      <div class="story">
+                        <span class="ring-s"><span>😌</span></span>
+                      </div>
+                      <div class="story">
+                        <span class="ring-s"><span>🔥</span></span>
+                      </div>
+                      <div class="story">
+                        <span class="ring-s"><span>😳</span></span>
+                      </div>
                     </div>
                   </div>
                 </div>
