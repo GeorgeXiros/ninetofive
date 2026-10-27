@@ -82,7 +82,7 @@
         background: var(--accent);
         color: #ffffff;
         border-radius: 0 0 32px 32px;
-        margin-bottom: 72px;
+        margin-bottom: clamp(56px, 8vw, 104px);
         position: relative;
       }
       .hero::before,
@@ -1017,7 +1017,7 @@
 
       /* ── Sections & Features ────────────────────────────────────── */
       section {
-        margin-bottom: 72px;
+        margin-bottom: clamp(56px, 8vw, 104px);
       }
       h2 {
         font-size: clamp(20px, 3.6vw, 24px);
@@ -1237,7 +1237,7 @@
         }
         .hero {
           border-radius: 0 0 24px 24px;
-          margin-bottom: 48px;
+          margin-bottom: 56px;
         }
         .hero .wrap {
           padding-top: 40px;
